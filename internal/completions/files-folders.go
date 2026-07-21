@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 
 	"github.com/lithammer/fuzzysearch/fuzzy"
-	"github.com/opencode-ai/opencode/internal/fileutil"
-	"github.com/opencode-ai/opencode/internal/logging"
-	"github.com/opencode-ai/opencode/internal/tui/components/dialog"
+	"github.com/frontdex/localsandbox/internal/fileutil"
+	"github.com/frontdex/localsandbox/internal/logging"
+	"github.com/frontdex/localsandbox/internal/tui/components/dialog"
 )
 
 type filesAndFoldersContextGroup struct {

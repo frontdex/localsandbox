@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/llm/tools"
-	"github.com/opencode-ai/opencode/internal/lsp"
-	"github.com/opencode-ai/opencode/internal/message"
-	"github.com/opencode-ai/opencode/internal/session"
+	"github.com/frontdex/localsandbox/internal/config"
+	"github.com/frontdex/localsandbox/internal/llm/tools"
+	"github.com/frontdex/localsandbox/internal/lsp"
+	"github.com/frontdex/localsandbox/internal/message"
+	"github.com/frontdex/localsandbox/internal/session"
 )
 
 type agentTool struct {

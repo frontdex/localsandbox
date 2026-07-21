@@ -9,12 +9,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/diff"
-	"github.com/opencode-ai/opencode/internal/history"
-	"github.com/opencode-ai/opencode/internal/logging"
-	"github.com/opencode-ai/opencode/internal/lsp"
-	"github.com/opencode-ai/opencode/internal/permission"
+	"github.com/frontdex/localsandbox/internal/config"
+	"github.com/frontdex/localsandbox/internal/diff"
+	"github.com/frontdex/localsandbox/internal/history"
+	"github.com/frontdex/localsandbox/internal/logging"
+	"github.com/frontdex/localsandbox/internal/lsp"
+	"github.com/frontdex/localsandbox/internal/permission"
 )
 
 type EditParams struct {

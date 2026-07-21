@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/opencode-ai/opencode/internal/llm/tools"
-	"github.com/opencode-ai/opencode/internal/message"
+	"github.com/frontdex/localsandbox/internal/llm/tools"
+	"github.com/frontdex/localsandbox/internal/message"
 )
 
 type bedrockOptions struct {

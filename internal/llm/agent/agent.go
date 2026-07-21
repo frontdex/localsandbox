@@ -8,16 +8,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/llm/models"
-	"github.com/opencode-ai/opencode/internal/llm/prompt"
-	"github.com/opencode-ai/opencode/internal/llm/provider"
-	"github.com/opencode-ai/opencode/internal/llm/tools"
-	"github.com/opencode-ai/opencode/internal/logging"
-	"github.com/opencode-ai/opencode/internal/message"
-	"github.com/opencode-ai/opencode/internal/permission"
-	"github.com/opencode-ai/opencode/internal/pubsub"
-	"github.com/opencode-ai/opencode/internal/session"
+	"github.com/frontdex/localsandbox/internal/config"
+	"github.com/frontdex/localsandbox/internal/llm/models"
+	"github.com/frontdex/localsandbox/internal/llm/prompt"
+	"github.com/frontdex/localsandbox/internal/llm/provider"
+	"github.com/frontdex/localsandbox/internal/llm/tools"
+	"github.com/frontdex/localsandbox/internal/logging"
+	"github.com/frontdex/localsandbox/internal/message"
+	"github.com/frontdex/localsandbox/internal/permission"
+	"github.com/frontdex/localsandbox/internal/pubsub"
+	"github.com/frontdex/localsandbox/internal/session"
 )
 
 // Common errors

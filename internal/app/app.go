@@ -9,17 +9,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/opencode-ai/opencode/internal/config"
-	"github.com/opencode-ai/opencode/internal/db"
-	"github.com/opencode-ai/opencode/internal/format"
-	"github.com/opencode-ai/opencode/internal/history"
-	"github.com/opencode-ai/opencode/internal/llm/agent"
-	"github.com/opencode-ai/opencode/internal/logging"
-	"github.com/opencode-ai/opencode/internal/lsp"
-	"github.com/opencode-ai/opencode/internal/message"
-	"github.com/opencode-ai/opencode/internal/permission"
-	"github.com/opencode-ai/opencode/internal/session"
-	"github.com/opencode-ai/opencode/internal/tui/theme"
+	"github.com/frontdex/localsandbox/internal/config"
+	"github.com/frontdex/localsandbox/internal/db"
+	"github.com/frontdex/localsandbox/internal/format"
+	"github.com/frontdex/localsandbox/internal/history"
+	"github.com/frontdex/localsandbox/internal/llm/agent"
+	"github.com/frontdex/localsandbox/internal/logging"
+	"github.com/frontdex/localsandbox/internal/lsp"
+	"github.com/frontdex/localsandbox/internal/message"
+	"github.com/frontdex/localsandbox/internal/permission"
+	"github.com/frontdex/localsandbox/internal/session"
+	"github.com/frontdex/localsandbox/internal/tui/theme"
 )
 
 type App struct {

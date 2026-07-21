@@ -5,7 +5,7 @@ import (
 	"slices"
 	"time"
 
-	"github.com/opencode-ai/opencode/internal/llm/models"
+	"github.com/frontdex/localsandbox/internal/llm/models"
 )
 
 type MessageRole string
