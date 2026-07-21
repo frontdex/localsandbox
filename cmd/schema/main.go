@@ -191,16 +191,7 @@ func generateSchema() map[string]any {
 	}
 
 	// Add known providers
-	knownProviders := []string{
-		string(models.ProviderAnthropic),
-		string(models.ProviderOpenAI),
-		string(models.ProviderGemini),
-		string(models.ProviderGROQ),
-		string(models.ProviderOpenRouter),
-		string(models.ProviderBedrock),
-		string(models.ProviderAzure),
-		string(models.ProviderVertexAI),
-	}
+	knownProviders := []string{}
 
 	providerSchema["additionalProperties"].(map[string]any)["properties"].(map[string]any)["provider"] = map[string]any{
 		"type":        "string",

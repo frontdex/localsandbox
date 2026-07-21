@@ -6,15 +6,11 @@ import (
 	"github.com/frontdex/localsandbox/internal/history"
 	"github.com/frontdex/localsandbox/internal/llm/tools"
 	"github.com/frontdex/localsandbox/internal/lsp"
-	"github.com/frontdex/localsandbox/internal/message"
 	"github.com/frontdex/localsandbox/internal/permission"
-	"github.com/frontdex/localsandbox/internal/session"
 )
 
 func CoderAgentTools(
 	permissions permission.Service,
-	sessions session.Service,
-	messages message.Service,
 	history history.Service,
 	lspClients map[string]*lsp.Client,
 ) []tools.BaseTool {
@@ -35,17 +31,6 @@ func CoderAgentTools(
 			tools.NewViewTool(lspClients),
 			tools.NewPatchTool(lspClients, permissions, history),
 			tools.NewWriteTool(lspClients, permissions, history),
-			NewAgentTool(sessions, messages, lspClients),
 		}, otherTools...,
 	)
-}
-
-func TaskAgentTools(lspClients map[string]*lsp.Client) []tools.BaseTool {
-	return []tools.BaseTool{
-		tools.NewGlobTool(),
-		tools.NewGrepTool(),
-		tools.NewLsTool(),
-		tools.NewSourcegraphTool(),
-		tools.NewViewTool(lspClients),
-	}
 }

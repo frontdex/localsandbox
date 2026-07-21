@@ -66,8 +66,6 @@ func New(ctx context.Context, conn *sql.DB) (*App, error) {
 		app.Messages,
 		agent.CoderAgentTools(
 			app.Permissions,
-			app.Sessions,
-			app.Messages,
 			app.History,
 			app.LSPClients,
 		),

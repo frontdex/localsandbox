@@ -73,9 +73,6 @@ type BinaryContent struct {
 
 func (bc BinaryContent) String(provider models.ModelProvider) string {
 	base64Encoded := base64.StdEncoding.EncodeToString(bc.Data)
-	if provider == models.ProviderOpenAI {
-		return "data:" + bc.MIMEType + ";base64," + base64Encoded
-	}
 	return base64Encoded
 }
 

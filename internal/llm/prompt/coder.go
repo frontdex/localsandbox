@@ -15,10 +15,6 @@ import (
 
 func CoderPrompt(provider models.ModelProvider) string {
 	basePrompt := baseAnthropicCoderPrompt
-	switch provider {
-	case models.ProviderOpenAI:
-		basePrompt = baseOpenAICoderPrompt
-	}
 	envInfo := getEnvironmentInfo()
 
 	return fmt.Sprintf("%s\n\n%s\n%s", basePrompt, envInfo, lspInformation())

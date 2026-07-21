@@ -1,7 +1,6 @@
 package chat
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"path/filepath"
@@ -12,7 +11,6 @@ import (
 	"github.com/charmbracelet/x/ansi"
 	"github.com/frontdex/localsandbox/internal/config"
 	"github.com/frontdex/localsandbox/internal/diff"
-	"github.com/frontdex/localsandbox/internal/llm/agent"
 	"github.com/frontdex/localsandbox/internal/llm/models"
 	"github.com/frontdex/localsandbox/internal/llm/tools"
 	"github.com/frontdex/localsandbox/internal/message"
@@ -218,8 +216,6 @@ func findToolResponse(toolCallID string, futureMessages []message.Message) *mess
 
 func toolName(name string) string {
 	switch name {
-	case agent.AgentToolName:
-		return "Task"
 	case tools.BashToolName:
 		return "Bash"
 	case tools.EditToolName:
@@ -246,8 +242,6 @@ func toolName(name string) string {
 
 func getToolAction(name string) string {
 	switch name {
-	case agent.AgentToolName:
-		return "Preparing prompt..."
 	case tools.BashToolName:
 		return "Building command..."
 	case tools.EditToolName:
@@ -335,11 +329,6 @@ func removeWorkingDirPrefix(path string) string {
 func renderToolParams(paramWidth int, toolCall message.ToolCall) string {
 	params := ""
 	switch toolCall.Name {
-	case agent.AgentToolName:
-		var params agent.AgentParams
-		json.Unmarshal([]byte(toolCall.Input), &params)
-		prompt := strings.ReplaceAll(params.Prompt, "\n", " ")
-		return renderParams(paramWidth, prompt)
 	case tools.BashToolName:
 		var params tools.BashParams
 		json.Unmarshal([]byte(toolCall.Input), &params)
@@ -453,11 +442,6 @@ func renderToolResponse(toolCall message.ToolCall, response message.ToolResult, 
 
 	resultContent := truncateHeight(response.Content, maxResultHeight)
 	switch toolCall.Name {
-	case agent.AgentToolName:
-		return styles.ForceReplaceBackgroundWithLipgloss(
-			toMarkdown(resultContent, false, width),
-			t.Background(),
-		)
 	case tools.BashToolName:
 		resultContent = fmt.Sprintf("```bash\n%s\n```", resultContent)
 		return styles.ForceReplaceBackgroundWithLipgloss(
@@ -610,17 +594,6 @@ func renderToolMessage(
 		parts = append(parts, lipgloss.JoinHorizontal(lipgloss.Left, prefix, toolNameText, formattedParams))
 	}
 
-	if toolCall.Name == agent.AgentToolName {
-		taskMessages, _ := messagesService.List(context.Background(), toolCall.ID)
-		toolCalls := []message.ToolCall{}
-		for _, v := range taskMessages {
-			toolCalls = append(toolCalls, v.ToolCalls()...)
-		}
-		for _, call := range toolCalls {
-			rendered := renderToolMessage(call, []message.Message{}, messagesService, focusedUIMessageId, true, width, 0)
-			parts = append(parts, rendered.content)
-		}
-	}
 	if responseContent != "" && !nested {
 		parts = append(parts, responseContent)
 	}
